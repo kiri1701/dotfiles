@@ -18,7 +18,7 @@ export ZSH=/Users/kiri/.oh-my-zsh
 # oh-my-zshで利用できるテーマを指定
 
 ZSH_THEME="agnoster"
-PROMPT='%n:%m$ '
+PROMPT='$ '
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -65,6 +65,7 @@ alias gst='git stash'
 alias gsl='git stash list'
 alias gsu='git stash -u'
 alias gsp='git stash pop'
+alias vim='nvim'
 alias vi='nvim'
 alias nv='nvim'
 alias r='ruby'
@@ -145,3 +146,33 @@ zsh_wifi_signal(){
 
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context time battery dir vcs virtualenv custom_wifi_signal)
+
+case "$TERM" in
+    xterm*|kterm*|rxvt*)
+    PROMPT=$(print "%B%{\e[34m%}%m:%(5~,%-2~/.../%2~,%~)%{\e[33m%}%# %b")
+    PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT") # title bar
+    ;;
+    *)
+    PROMPT='%m:%c%# '
+    ;;
+esac
+
+function powerline_precmd() {
+    PS1="$(powerline-shell --shell zsh $?)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+  fi
+
+export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home

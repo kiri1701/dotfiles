@@ -1,3 +1,31 @@
+" 挿入モードでTABキーを押した際、対応する数のスペースを入力
+set expandtab
+" 画面上でタブ文字が占める幅の指定
+set tabstop=2
+" 自動インデントでずれる幅の指定
+set shiftwidth=2
+" 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅の指定
+set softtabstop=2
+" 改行時に前の行のインデントを継続する
+set autoindent
+" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set smartindent
+" 対応括弧に<と>のペアを追加
+set matchpairs& matchpairs+=<:>
+" 対応括弧をハイライト表示する
+set showmatch
+" 対応括弧の表示秒数を3秒にする
+set matchtime=3
+" ウィンドウの幅より長い行は折り返され、次の行に続けて表示される
+set wrap
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
+" シンタックスハイライト
+syntax on
+" for deoplete.vim
+" 一つ目の候補を選択状態にする
+set completeopt+=noinsert
+
 if &compatible
   set nocompatible
 endif
@@ -35,10 +63,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-colorscheme dracula
-set background=dark
-set ambiwidth=double
-set clipboard+=unnamed
 
 inoremap <C-e> <Esc>$a
 inoremap <C-a> <Esc>^a
@@ -72,9 +96,6 @@ highlight PMenuSbar ctermbg=4
 " 補完ウィンドウの設定
 set completeopt=menuone
 
-" 補完ウィンドウの設定
-set completeopt=menuone
-
 " rsenseでの自動補完機能を有効化
 let g:rsenseUseOmniFunc = 1
 " let g:rsenseHome = '/usr/local/lib/rsense-0.3'
@@ -82,41 +103,69 @@ let g:rsenseUseOmniFunc = 1
 " auto-ctagsを使ってファイル保存時にtagsファイルを更新
 let g:auto_ctags = 1
 
-" 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
-
-" 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_enable_smart_case = 1
-
-" _(アンダースコア)区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
-
-let g:neocomplcache_enable_camel_case_completion  =  1
-
-" 最初の補完候補を選択状態にする
-let g:neocomplcache_enable_auto_select = 1
-
-" ポップアップメニューで表示される候補の数
-let g:neocomplcache_max_list = 20
-
-" シンタックスをキャッシュするときの最小文字長
-let g:neocomplcache_min_syntax_length = 3
-
-" 補完の設定
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
-
-if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
 " vim-airline
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'papercolor'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline#extensions#tabline#formatter = 'unique-tail'
+
+" テーマ
+colorscheme dracula
+set background=dark
+set ambiwidth=double
+set clipboard+=unnamed
+
+" キーマップ
+" nnoremap [fugitive]  <Nop>
+nmap <space>g [fugitive]
+nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
+nnoremap <silent> [fugitive]a :Gwrite<CR>
+nnoremap <silent> [fugitive]c :Gcommit-v<CR>
+nnoremap <silent> [fugitive]b :Gblame<CR>
+nnoremap <silent> [fugitive]d :Gdiff<CR>
+nnoremap <silent> [fugitive]m :Gmerge<CR>
+
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+
+" vim-tags
+let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
+let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
+
+" for accelerated-jk
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+
+" for vim-anzu
+nmap n nzz<Plug>(anzu-update-search-status)
+nmap N Nzz<Plug>(anzu-update-search-status)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+
