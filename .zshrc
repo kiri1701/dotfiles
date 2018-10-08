@@ -176,3 +176,9 @@ if [ "$TERM" != "linux" ]; then
 
 export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kiri/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kiri/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kiri/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kiri/google-cloud-sdk/completion.zsh.inc'; fi
