@@ -128,6 +128,8 @@ setopt hist_reduce_blanks
 
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 source ~/.iterm2_shell_integration.zsh
@@ -137,12 +139,12 @@ export RUST_SRC_PATH='/Users/kiri/.multirust/toolchains/stable-x86_64-apple-darw
 eval $(thefuck --alias)
 
 zsh_wifi_signal(){
-    local signal=$(nmcli device wifi | grep yes | awk '{print $8}')
-    local color='%F{yellow}'
-    [[ $signal -gt 75 ]] && color='%F{green}'
-    [[ $signal -lt 50 ]] && color='%F{red}'
-    echo -n "%{$color%}\uf230  $signal%{%f%}" # \uf230 is 
-}
+   local signal=$(nmcli device wifi | grep yes | awk '{print $8}')
+   local color='%F{yellow}'
+   [[ $signal -gt 75 ]] && color='%F{green}'
+   [[ $signal -lt 50 ]] && color='%F{red}'
+   echo -n "%{$color%}\uf230  $signal%{%f%}" # \uf230 is 
+ }
 
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context time battery dir vcs virtualenv custom_wifi_signal)
@@ -158,7 +160,7 @@ case "$TERM" in
 esac
 
 function powerline_precmd() {
-    PS1="$(powerline-shell --shell zsh $?)"
+   PS1="$(powerline-shell --shell zsh $?)"
 }
 
 function install_powerline_precmd() {
@@ -171,8 +173,8 @@ function install_powerline_precmd() {
 }
 
 if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-  fi
+  install_powerline_precmd
+fi
 
 export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
