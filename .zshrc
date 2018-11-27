@@ -3,26 +3,16 @@ export PATH=/usr/local/bin:/Library/TeX/texbin:$PATH
 export PATH="$HOME/.pyenv/shims:$PATH"
 export PATH="$PATH:/usr/local/bin"
 # rbenvのパスを通す
+eval "$(pyenv init -)" 
 eval "$(rbenv init -)"
 
-# zplugを導入するPATH
-# export ZPLUG_HOME=/usr/local/opt/zplug
-# source $ZPLUG_HOME/init.zsh
+#vi ライクな操作ができる
+bindkey -v
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/kiri/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# oh-my-zshで利用できるテーマを指定
 
 ZSH_THEME="agnoster"
 PROMPT='$ '
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+
 # oh my zshで利用できるプラグインを指定
 plugins=(brew brew-cask cdd gem git rbenv vagrant zsh-syntax-highlighting zsh-completions)
 
@@ -33,16 +23,6 @@ source $ZSH/oh-my-zsh.sh
 zstyle ':completion:*' menu select interactive
 setopt menu_complete
 
-#source ~/alien/alien.zsh
-#export ALIEN_THEME="blue"
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g='git'
 alias gs='git status'
 alias gb='git branch'
@@ -101,6 +81,9 @@ setopt nolistbeep
 
 # cd -<tab>で以前移動したディレクトリを表示
 setopt auto_pushd
+
+# コマンドラインでも # 以降をコメントと見なす
+setopt interactive_comments
 
 # ヒストリ(履歴)を保存、数を増やす
 HISTFILE=~/.zsh_history
