@@ -1,35 +1,4 @@
-" 挿入モードでTABキーを押した際、対応する数のスペースを入力
-set expandtab
-" 画面上でタブ文字が占める幅の指定
-set tabstop=2
-" 自動インデントでずれる幅の指定
-set shiftwidth=2
-" 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅の指定
-set softtabstop=2
-" 改行時に前の行のインデントを継続する
-set autoindent
-" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-set smartindent
-" 対応括弧に<と>のペアを追加
-set matchpairs& matchpairs+=<:>
-" 対応括弧をハイライト表示する
-set showmatch
-" 対応括弧の表示秒数を3秒にする
-set matchtime=3
-" ウィンドウの幅より長い行は折り返され、次の行に続けて表示される
-set wrap
-" 入力モード中に素早くjjと入力した場合はESCとみなす
-inoremap jj <Esc>
-" シンタックスハイライト
-syntax on
-" for deoplete.vim
-" 一つ目の候補を選択状態にする
-set completeopt+=noinsert
-
-if &compatible
-  set nocompatible
-endif
-
+" dein
 let s:dein_dir = expand('~/.cache/dein')
 
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -55,19 +24,23 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-filetype plugin indent on
-syntax enable
-
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
 endif
 
+" 補完
+" 一つ目の候補を選択状態にする
+set completeopt+=noinsert
 
-inoremap <C-e> <Esc>$a
-inoremap <C-a> <Esc>^a
-noremap <C-e> <Esc>$a
-noremap <C-a> <Esc>^a
+if &compatible
+  set nocompatible
+endif
+" 補完ウィンドウの設定
+set completeopt=menuone
+" rsenseでの自動補完機能を有効化
+let g:rsenseUseOmniFunc = 1
+" let g:rsenseHome = '/usr/local/lib/rsense-0.3'
 
 " NERDTree の設定 -------------------------------------------------------------
   " ディレクトリ表示の設定
@@ -88,20 +61,16 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
-
 highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
 
-" 補完ウィンドウの設定
-set completeopt=menuone
-
-" rsenseでの自動補完機能を有効化
-let g:rsenseUseOmniFunc = 1
-" let g:rsenseHome = '/usr/local/lib/rsense-0.3'
-
+" タグジャンプ
 " auto-ctagsを使ってファイル保存時にtagsファイルを更新
 let g:auto_ctags = 1
+" vim-tags
+let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
+let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
 
 " vim-airline
 let g:airline_theme = 'papercolor'
@@ -117,8 +86,40 @@ set background=dark
 set ambiwidth=double
 set clipboard+=unnamed
 
+" 環境設定
+" 挿入モードでTABキーを押した際、対応する数のスペースを入力
+set expandtab
+" 画面上でタブ文字が占める幅の指定
+set tabstop=2
+" 自動インデントでずれる幅の指定
+set shiftwidth=2
+" 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅の指定
+set softtabstop=2
+" 改行時に前の行のインデントを継続する
+set autoindent
+" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set smartindent
+" 対応括弧に<と>のペアを追加
+set matchpairs& matchpairs+=<:>
+" 対応括弧をハイライト表示する
+set showmatch
+" 対応括弧の表示秒数を3秒にする
+set matchtime=3
+" ウィンドウの幅より長い行は折り返され、次の行に続けて表示される
+set wrap
+" シンタックスハイライト
+syntax on
+
+filetype plugin indent on
+
+
 " キーマップ
-" nnoremap [fugitive]  <Nop>
+inoremap jj <Esc>
+inoremap <C-e> <Esc>$a
+inoremap <C-a> <Esc>^a
+noremap <C-e> <Esc>$a
+noremap <C-a> <Esc>^a
+
 nmap <space>g [fugitive]
 nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
 nnoremap <silent> [fugitive]a :Gwrite<CR>
@@ -154,10 +155,7 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
-" vim-tags
-let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECTORY} 2>/dev/null"
-let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
-
+" plugins
 " for accelerated-jk
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
