@@ -22,7 +22,7 @@ export PGDATA=/usr/local/var/postgres
 # envのパスを通す
 eval "$(pyenv init -)"
 eval "$(rbenv init -)"
-eval $(thefuck --alias)
+eval "$(pyenv virtualenv-init -)"
 
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -48,9 +48,8 @@ alias gd='git diff'
 alias gl='git log'
 alias gcm='git commit -m'
 alias gpom='git push origin master'
-alias vim='nvim'
+alias vim='vim'
 alias vi='nvim'
-alias nv='nvim'
 alias r='ruby'
 alias mss='mysql.server start'
 alias so='source'

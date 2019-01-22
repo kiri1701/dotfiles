@@ -13,13 +13,9 @@ endif
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-
   let s:toml_dir = expand('~/.config/nvim')
-
   call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
-
   call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
-
   call dein#end()
   call dein#save_state()
 endif
@@ -29,6 +25,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 " 補完
 " 一つ目の候補を選択状態にする
 set completeopt+=noinsert
