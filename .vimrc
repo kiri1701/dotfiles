@@ -1,6 +1,5 @@
 " dein
 let s:dein_dir = expand('~/.cache/dein')
-
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 " dein.vimが存在していない場合はgithubからclone
@@ -48,15 +47,13 @@ let g:rsenseUseOmniFunc = 1
   nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " unite.vimの設定
-noremap <C-U><C-F> :Unite -buffer-name=file file<CR> 
-noremap <C-U><C-R> :Unite file_mru<CR> 
-
-au FileType unite nnoremap <silent> <buffer> <expr> <C-i> unite#do_action('split') 
-au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split')
-
+" noremap <C-U><C-F> :Unite -buffer-name=file file<CR> 
+" noremap <C-U><C-R> :Unite file_mru<CR> 
+" au FileType unite nnoremap <silent> <buffer> <expr> <C-i> unite#do_action('split') 
+" au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split')
 " ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+" au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+" au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
@@ -70,18 +67,18 @@ let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R {OPTIONS} {DIRECT
 let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R {OPTIONS} `bundle show --paths` 2>/dev/null"
 
 " vim-airline
-let g:airline_theme = 'papercolor'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline#extensions#tabline#formatter = 'unique-tail'
+" let g:airline_theme = 'papercolor'
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" let g:airline#extensions#whitespace#mixed_indent_algo = 1
+" let g:airline#extensions#tabline#formatter = 'unique-tail'
 
 " テーマ
-colorscheme dracula
-set background=dark
-set ambiwidth=double
-set clipboard+=unnamed
+" colorscheme dracula
+" set background=dark
+" set ambiwidth=double
+" set clipboard+=unnamed
 
 " 環境設定
 " 挿入モードでTABキーを押した際、対応する数のスペースを入力
@@ -117,14 +114,6 @@ inoremap <C-a> <Esc>^a
 noremap <C-e> <Esc>$a
 noremap <C-a> <Esc>^a
 
-nmap <space>g [fugitive]
-nnoremap <silent> [fugitive]s :Gstatus<CR><C-w>T
-nnoremap <silent> [fugitive]a :Gwrite<CR>
-nnoremap <silent> [fugitive]c :Gcommit-v<CR>
-nnoremap <silent> [fugitive]b :Gblame<CR>
-nnoremap <silent> [fugitive]d :Gdiff<CR>
-nnoremap <silent> [fugitive]m :Gmerge<CR>
-
 nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
@@ -149,8 +138,6 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
-nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
-nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
 " plugins
 " for accelerated-jk
