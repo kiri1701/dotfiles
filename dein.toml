@@ -1,38 +1,92 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# space + ne -> sidebar
 [[plugins]]
 repo = 'scrooloose/nerdtree'
-
 [[plugins]]
-repo = 'jonathanfilip/vim-lucius'
+repo = 'jistr/vim-nerdtree-tabs'
 
+# ga -> align
 [[plugins]]
-repo = 'Shougo/neocomplete'
+repo = 'junegunn/vim-easy-align'
 
+# space + go -> exec script
 [[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-
+repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
+build = 'make'
 
-[[plugins]] 
-repo = 'Yggdroot/indentLine'
-
+# gcc -> comment
 [[plugins]]
-repo = 'scrooloose/nerdtree'
+repo = 'tpope/vim-commentary'
 
+# option bar
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+depends = ['/vim-airline/vim-airline']
 
+# auto bracket
 [[plugins]]
-repo = 'dracula/vim'
+repo = 'Raimondi/delimitMate'
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# error detect
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+# delete whitespace
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# html
+[[plugins]]
+repo =  'hail2u/vim-css3-syntax'
+[[plugins]]
+repo = 'gorodinskiy/vim-coloresque'
+[[plugins]]
+repo = 'tpope/vim-haml'
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+# javascript
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+
+# space + sh -> vimshell
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+
+# vimからGitの各種コマンドを実行できるようにする
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# /検索強化
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+
+# 置き換えのオペレータを追加
+[[plugins]]
+repo = 'kana/vim-operator-user'
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+
+# fzfのインクリメンタルサーチを使えるように
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+[[plugins]]
+repo = '/usr/local/opt/fzf'
+
+# %による移動
+[[plugins]]
+repo = 'andymass/vim-matchup'
+
+# lsp用
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'

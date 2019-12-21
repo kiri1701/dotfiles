@@ -1,33 +1,25 @@
+# pythonの補完
 [[plugins]]
-repo = 'fatih/vim-go'
-on_ft = ['go']
+repo = 'davidhalter/jedi-vim'
+on_ft = ['python', 'python3']
 
+# vimのpythonにpyenvのpythonを使えるようにする
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
-on_ft = ['md', 'markdown']
+repo = 'lambdalisue/vim-pyenv'
+depends = ['davidhalter/jedi-vim']
+on_ft = ['python', 'python3']
 
+# snippetを追加
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-on_i = 1
-
-[[plugins]]
-repo   = 'Shougo/unite.vim'
-
-[[plugins]]
-repo      = 'Shougo/neomru.vim'
-on_source = ['unite.vim']
-
-[[plugins]] 
 repo = 'Shougo/neosnippet'
-
-[[plugins]] 
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]] 
-repo = 'szw/vim-tags'
-
-[[plugins]] 
-repo = 'tpope/vim-endwise'
-
-[[plugins]] 
-repo = 'todesking/ruby_hl_lvar.vim'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+on_i  = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
