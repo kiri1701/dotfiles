@@ -9,6 +9,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# zsh-complation
+fpath=(path/to/zsh-completions/src $fpath)
+
+#peco
+function peco-history-selection() {
+    BUFFER=$(history 1 | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\*?\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$LBUFFER")
+    CURSOR=${#BUFFER}
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
 # Customize to your needs...
 alias g='git'
 alias gs='git status'
@@ -36,12 +48,14 @@ export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export USERNAME='kiri1701'
 
 # envのパスを通す
 ## Set path for pyenv
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 eval "$(pyenv virtualenv-init -)"
 eval "$(rbenv init -)"
