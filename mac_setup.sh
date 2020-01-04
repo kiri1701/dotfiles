@@ -6,9 +6,10 @@ rm Applications/.localized Desktop/.localized Library/.localized Movies/.localiz
 killall Finder
 
 # basic install
+# virtualbox can't be installed once
 brew cask install alfred iterm2 visual-studio-code
-brew install openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux neovim go mysql posgresql nginx peco fzf ghq zsh-completions zsh-autosuggestions r docker
-brew cask install docker rstudio vagrant virtualbox mysqlworkbench
+brew install openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux neovim go mysql posgresql nginx peco fzf ghq zsh-completions zsh-autosuggestions r docker tig
+brew cask install docker rstudio vagrant mysqlworkbench db-browser-for-sqlite tableplus wireshark
 brew tap homebrew/cask-fonts && brew cask install font-fira-code
 
 # zsh setup
