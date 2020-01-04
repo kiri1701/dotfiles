@@ -34,6 +34,7 @@ alias gcm='git commit -m'
 alias gpom='git push origin master'
 alias vim='nvim'
 alias vi='vim'
+alias pes='pipenv shell'
 
 # 追加したソフトやパッケージ用のコマンドのパスを通す
 export PATH="$PATH:/usr/local/bin"

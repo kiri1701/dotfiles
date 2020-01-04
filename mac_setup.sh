@@ -1,10 +1,14 @@
 # homebrew install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+# for english directory name
+rm Applications/.localized Desktop/.localized Library/.localized Movies/.localized Music/.localized Pictures/.localized
+killall Finder
+
 # basic install
 brew cask install alfred iterm2 visual-studio-code
-brew install openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux neovim mysql posgresql nginx peco fzf zsh-completions zsh-autosuggestions r docker
-brew cask install docker rstudio
+brew install openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux neovim go mysql posgresql nginx peco fzf ghq zsh-completions zsh-autosuggestions r docker
+brew cask install docker rstudio vagrant virtualbox mysqlworkbench
 brew tap homebrew/cask-fonts && brew cask install font-fira-code
 
 # zsh setup
