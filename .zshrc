@@ -36,33 +36,22 @@ alias vim='nvim'
 alias vi='vim'
 
 # 追加したソフトやパッケージ用のコマンドのパスを通す
-export PATH=/usr/local/bin:/Library/TeX/texbin:$PATH
 export PATH="$PATH:/usr/local/bin"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH=$PATH:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/bin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
-export PGDATA=/usr/local/var/postgres
+export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export EDITOR='vim' # nanoからvimに変更
 export VISUAL='vim' # nanoからvimに変更
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_ROOT=/usr/local/var/pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export USERNAME='kiri1701'
+export PGDATA=/usr/local/var/postgres
+export PIPENV_VENV_IN_PROJECT=true
 
 # envのパスを通す
 ## Set path for pyenv
 if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
 fi
-eval "$(pyenv virtualenv-init -)"
-eval "$(rbenv init -)"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kiri/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kiri/google-cloud-sdk/path.zsh.inc'; fi
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/kiri/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kiri/google-cloud-sdk/completion.zsh.inc'; fi
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
