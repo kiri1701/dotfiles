@@ -9,7 +9,7 @@ killall Finder
 # virtualbox can't be installed once
 brew cask install alfred iterm2 visual-studio-code
 brew install openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux neovim go mysql posgresql nginx peco fzf ghq zsh-completions zsh-autosuggestions r docker tig
-brew cask install docker rstudio vagrant mysqlworkbench db-browser-for-sqlite tableplus wireshark
+brew cask install docker rstudio vagrant mysqlworkbench db-browser-for-sqlite tableplus wireshark zotero
 brew tap homebrew/cask-fonts && brew cask install font-fira-code
 
 # zsh setup
