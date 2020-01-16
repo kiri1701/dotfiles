@@ -1,40 +1,47 @@
-# homebrew install
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# for english directory name
-rm Applications/.localized Desktop/.localized Library/.localized Movies/.localized Music/.localized Pictures/.localized
-killall Finder
-
-# basic install
-# virtualbox can't be installed once
-brew cask install alfred iterm2 visual-studio-code
-brew install openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux neovim go mysql posgresql nginx peco fzf ghq zsh-completions zsh-autosuggestions r docker tig
-brew cask install docker rstudio vagrant mysqlworkbench db-browser-for-sqlite tableplus wireshark zotero
+#!/bin/zsh
+set -e
+# brew install tools
+brew install gcc wget cmake make openssl readline sqlite3 xz zlib pyenv direnv pipenv nodebrew tmux go mysql postgresql nginx peco fzf ghq zsh-completions zsh-autosuggestions r docker tig libomp
+brew install --HEAD neovim
+brew cask install docker rstudio tableplus wireshark zotero gimp dropbox appcleaner google-backup-and-sync dash skitch java
 brew tap homebrew/cask-fonts && brew cask install font-fira-code
 
+# for english directory name
+cd
+rm Applications/.localized Desktop/.localized Library/.localized Movies/.localized Music/.localized Pictures/.localized Downloads/.localized Documents/.localized
+killall Finder
+
 # zsh setup
+cd
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
-cp dotfiles/.zpreztorc .zprezto/runcomes/zpreztorc
-ln -s .zpreztorc .zprezto/runcoms/zpreztorc
-cp dotfiles/prompt_sorin_setup .zprezto/modules/prompt/functions/prompt_sorin_setup
-cp dotfiles/.tmux.conf ~/.tmux.conf
-
-# vim setup
-mkdir -p ~/.config/nvim
-cp dotfiles/.vimrc ~/.vimrc
-cp dotfiles/dein.toml ~/.config/nvim/dein.toml
-cp dotfiles/dein_lazy.toml ~/.config/nvim/dein_lazy.toml
-ln -s ~/.vimrc ~/.config/nvim/init.vim
+cp ~/dotfiles/.zshrc ~/.zshrc
+cp ~/dotfiles/.zpreztorc ~/.zprezto/runcoms/zpreztorc
+cp ~/dotfiles/prompt_sorin_setup ~/.zprezto/modules/prompt/functions/prompt_sorin_setup
+cp ~/dotfiles/.tmux.conf ~/.tmux.conf
+source ~/.zshrc
 
 # python setup
 pyenv install 3.7.5
 pyenv global 3.7.5
+pyenv rehash
+pip install -r ~/dotfiles/requirements.txt
+source virutalenvwarpper.sh
 
-# node
+# vim setup
+mkdir ~/.config
+cp -r ~/dotfiles/.config/nvim ~/.config/
+ln -s ~/.config/nvim/init.vim ~/.vimrc
+
+mkdir -p ~/.cache/dein
+cd ~/.cache/dein
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.cache/dein
+
+# node setup
 nodebrew setup
 nodebrew install-binary stable
 nodebrew use stable
@@ -52,3 +59,6 @@ sudo cjk-gs-integrate --link-texmf --cleanup
 sudo cjk-gs-integrate-macos --link-texmf
 sudo mktexlsr
 sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
+
+# ssh
+ssh-keygen
