@@ -10,7 +10,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # zsh-complation
-fpath=(path/to/zsh-completions/src $fpath)
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 
 #peco
 function peco-history-selection() {
@@ -39,7 +41,6 @@ alias pes='pipenv shell'
 # 追加したソフトやパッケージ用のコマンドのパスを通す
 export PATH="$PATH:/usr/local/bin"
 export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
-export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export EDITOR='vim' # nanoからvimに変更
@@ -48,6 +49,7 @@ export PYENV_ROOT=/usr/local/var/pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PGDATA=/usr/local/var/postgres
 export PIPENV_VENV_IN_PROJECT=true
+export WORKON_HOME=$HOME/.virtualenvs
 
 # envのパスを通す
 ## Set path for pyenv
@@ -55,4 +57,3 @@ if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
 fi
-
