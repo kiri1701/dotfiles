@@ -9,11 +9,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# zsh-complation
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
 #peco
 function peco-history-selection() {
     BUFFER=$(history 1 | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\*?\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$LBUFFER")
@@ -35,21 +30,19 @@ alias gl='git log'
 alias gcm='git commit -m'
 alias gpom='git push origin master'
 alias vim='nvim'
-alias vi='vim'
-alias pes='pipenv shell'
 
 # 追加したソフトやパッケージ用のコマンドのパスを通す
+export EDITOR='vim' # nanoからvimに変更
+export VISUAL='vim' # nanoからvimに変更
 export PATH="$PATH:/usr/local/bin"
 export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export EDITOR='vim' # nanoからvimに変更
-export VISUAL='vim' # nanoからvimに変更
 export PYENV_ROOT=/usr/local/var/pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PGDATA=/usr/local/var/postgres
 export PIPENV_VENV_IN_PROJECT=true
 export WORKON_HOME=$HOME/.virtualenvs
+export PGDATA=/usr/local/var/postgres
 
 # envのパスを通す
 ## Set path for pyenv

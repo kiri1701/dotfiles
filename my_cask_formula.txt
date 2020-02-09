@@ -4,7 +4,6 @@ basictex
 dash
 docker
 dropbox
-font-fira-code
 gimp
 gitkraken
 google-backup-and-sync
