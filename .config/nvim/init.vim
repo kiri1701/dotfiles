@@ -1,6 +1,6 @@
 " python path
-let g:python3_host_prog = $PYENV_ROOT.'/shims/python'
-let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = $PYENV_ROOT.'/versions/3.7.5/bin/python'
+let g:python_host_prog = $PYENV_ROOT.'/versions/2.7.17/bin/python'
 
 " プラグインの設定ファイルPath
 let s:plugin = '~/.config/nvim/plugins/config/dein.toml'
@@ -56,7 +56,7 @@ highlight PmenuSel ctermbg=233 ctermfg=166
 highlight Search ctermbg=166 ctermfg=233
 highlight Visual ctermbg=166 ctermfg=233
 
-let mapleader = "\<Space>"
+let mapleader = "<Space>"
 
 "" vim-airline
 let g:airline_theme = 'wombat'
