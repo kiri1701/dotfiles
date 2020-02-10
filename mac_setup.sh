@@ -1,7 +1,17 @@
 #!/bin/zsh
+printf "password: "
+read password
+
+# フォルダ名の英語化
+rm */.localized -y
 
 # brew install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Fira code
+brew tap homebrew/cask-fonts && brew cask install font-fira-code
+
+# requirements.txt的なやつ
 xargs brew install < my_formula.txt
 xargs brew cask install < my_cask_formula.txt
 
@@ -44,8 +54,17 @@ ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 # nvimを開いて:call  dein#update()を実行
 # 上手くいかなければ:checkhealth
 
-# Fira code
-brew tap homebrew/cask-fonts && brew cask install font-fira-code
 
 # SSH
 ssh-keygen -y
+
+# latex
+echo "$passowrd" | sudo -S tlmgr update --self --all
+echo "$passowrd" | sudo -S tlmgr paper a4
+echo "$passowrd" | sudo -S tlmgr install collection-langjapanese
+echo "$password" | sudo -S tlmgr repository add http://contrib.texlive.info/current tlcontrib
+echo "$password" | sudo -S tlmgr pinning add tlcontrib '*'
+echo "$password" | sudo -S tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
+echo "$password" | sudo -S cjk-gs-integrate --link-texmf --cleanup
+echo "$password" | sudo -S mktexlsr
+echo "$password" | sudo -S kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
