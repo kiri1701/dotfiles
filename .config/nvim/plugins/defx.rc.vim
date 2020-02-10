@@ -2,9 +2,9 @@
 nnoremap <C-w>f :<C-u>Defx<CR>
 
 call defx#custom#option('_', {
-    \ 'columns': 'indent:git:icons:filename',
-    \ 'show_ignored_files': 1,
-    \ })
+   \ 'columns': 'indent:git:icons:filename',
+   \ 'show_ignored_files': 1,
+   \ })
 
 let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 2
@@ -12,7 +12,7 @@ let g:defx_icons_column_length = 2
 autocmd FileType defx call s:defx_my_settings()
     function! s:defx_my_settings() abort
       nnoremap <silent><buffer><expr> <CR>
-     \ defx#do_action('open')
+      \ defx#do_action('open')
       " 【o】 ファイルを開く
       nnoremap <silent><buffer><expr> o
       \ defx#do_action('open')
@@ -52,14 +52,14 @@ autocmd FileType defx call s:defx_my_settings()
       " 【yy】 ファイル/ディレクトリのパスをコピーする
       nnoremap <silent><buffer><expr> yy
       \ defx#do_action('yank_path')
-      nnoremap <silent><buffer><expr> .
       " 【.】 隠しファイルを表示/非表示する
+      nnoremap <silent><buffer><expr> .
       \ defx#do_action('toggle_ignored_files')
-      nnoremap <silent><buffer><expr> ..
       " 【..】 親ディレクトリに移動する
+      nnoremap <silent><buffer><expr> ..
       \ defx#do_action('cd', ['..'])
-      nnoremap <silent><buffer><expr> ~
       " 【~】 ホームディレクトリに移動する
+      nnoremap <silent><buffer><expr> ~
       \ defx#do_action('cd')
       " 【ESC】 / 【q】 defx.nvimを終了する
       nnoremap <silent><buffer><expr> <Esc>
