@@ -1,4 +1,4 @@
-let g:python3_host_prog = $PYENV_ROOT.'/versions/anaconda3-5.2.0/bin/python'
+let g:python3_host_prog = $PYENV_ROOT.'/shims/python'
 let g:python_host_prog = '/usr/local/bin/python'
 
 " dein
@@ -27,21 +27,6 @@ endif
 
 filetype plugin indent on
 let mapleader = "\<Space>"
-
-"" youcompleteme
-let g:ycm_server_python_interpreter = '/usr/bin/python2.7'
-let g:ycm_python_binary_path = '/usr/bin/python2.7'
-let g:ycm_auto_trigger = 1
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:make = 'gmake'
-if exists('make')
-  let g:make = 'make'
-endif
 
 "" vim-airline
 let g:airline_theme = 'wombat'
@@ -99,19 +84,6 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
-"" jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-n>"
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#force_py_version = 3
-autocmd FileType python setlocal completeopt-=preview
-
 "" syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
 let g:polyglot_disabled = ['python']
@@ -123,6 +95,9 @@ nmap N Nzz<Plug>(anzu-update-search-status)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+
+" for opretaor-replace
+map R <Plug>(operator-replace)
 
 " function
 "" xaml
@@ -172,6 +147,57 @@ augroup vimrc-python
       \ formatoptions+=croq softtabstop=4
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
+
+" vim-lspの各種オプション設定
+"let g:lsp_signs_enabled = 1
+"let g:lsp_diagnostics_enabled = 1
+"let g:lsp_diagnostics_echo_cursor = 1
+"let g:lsp_virtual_text_enabled = 1
+"let g:lsp_signs_error = {'text': '✗'}
+"let g:lsp_signs_warning = {'text': '‼'}
+"let g:lsp_signs_information = {'text': 'i'}
+"let g:lsp_signs_hint = {'text': '?'}
+
+"if (executable('pyls'))
+"    " pylsの起動定義
+""    augroup LspPython
+""        autocmd!
+""        autocmd User lsp_setup call lsp#register_server({
+""            \ 'name': 'pyls',
+""            \ 'cmd': { server_info -> ['pyls'] },
+""            \ 'whitelist': ['python'],
+""            \})
+""    augroup END
+"endif
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ }
+let g:LanguageClient_selectionUI = 'location-list'
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+if has('conceal')
+    set conceallevel=2 concealcursor=niv
+endif
+
+" deoplete options
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case = 0
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_refresh_always = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#max_list = 10000
 
 " キーマップ
 "" save

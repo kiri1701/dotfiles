@@ -9,6 +9,44 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# zsh-complation
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+#peco
+function peco-history-selection() {
+    BUFFER=$(history 1 | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\*?\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$LBUFFER")
+    CURSOR=${#BUFFER}
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+# 追加したソフトやパッケージ用のコマンドのパスを通す
+export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
+export PATH="$HOME/.nodebrew/current/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export EDITOR='vim' # nanoからvimに変更
+export VISUAL='vim' # nanoからvimに変更
+export PYENV_ROOT=$HOME/.pyenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PGDATA=/usr/local/var/postgres
+export PIPENV_VENV_IN_PROJECT=true
+export WORKON_HOME=$HOME/.virtualenvs
+export PATH=/usr/local/cuda-10.1/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
+export CXX='g++-7'
+export CC='gcc-7'
+
+# envのパスを通す
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH=${PYENV_ROOT}/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
 # Customize to your needs...
 alias g='git'
 alias gs='git status'
@@ -25,18 +63,3 @@ alias vi='vim'
 alias mem='cat /proc/meminfo'
 alias cpu='cat /proc/cpuinfo'
 alias gpu='nvidia-smi'
-# 追加したソフトやパッケージ用のコマンドのパスを通す
-export PATH="$PATH:/usr/local/bin"
-export EDITOR='vim' # nanoからvimに変更
-export VISUAL='vim' # nanoからvimに変更
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH=/usr/local/cuda-10.1/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
-eval "$(pyenv init -)"
-export CXX='g++-7'
-export CC='gcc-7'
-
-

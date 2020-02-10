@@ -1,0 +1,78 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# option bar
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = ['/vim-airline/vim-airline']
+
+# auto bracket
+[[plugins]]
+repo = 'Raimondi/delimitMate'
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+# delete whitespace
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# vimからGitの各種コマンドを実行できるようにする
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# /検索強化
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+
+# 置き換えのオペレータを追加
+[[plugins]]
+repo = 'kana/vim-operator-user'
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+
+# fzfのインクリメンタルサーチを使えるように
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+[[plugins]]
+repo = '/usr/local/opt/fzf'
+
+# %による移動
+[[plugins]]
+repo = 'andymass/vim-matchup'
+
+# coc
+[[plugins]]
+repo = "neoclide/coc.nvim"
+merge = 0
+rev = "release"
+hook_add = """
+source ~/.config/nvim/plugins/coc.rc.vim
+"""
+
+# Dark Power plugins
+[[plugins]]
+repo = "Shougo/defx.nvim"
+depends = ["defx-git"]
+hook_add = """
+source ~/.config/nvim/plugins/defx.rc.vim
+"""
+
+[[plugins]]
+repo ="kristijanhusak/defx-git"
+hook_add = """
+source ~/.config/nvim/plugins/defx-git.rc.vim
+"""
+
+[[plugins]]
+repo = "Shougo/denite.nvim"
+hook_add = """
+source ~/.config/nvim/plugins/denite.rc.vim
+"""
+
+[[plugins]]
+repo = "shougo/deol.nvim"
+hook_add = """
+source ~/.config/nvim/plugins/deol.rc.vim
+"""
