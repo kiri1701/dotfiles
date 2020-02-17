@@ -1,6 +1,7 @@
 cmake
 direnv
 docker
+expect
 fzf
 ghostscript
 ghq
@@ -16,6 +17,7 @@ libssh
 lua@5.1
 luarocks
 make
+mongodb/brew/mongodb-community
 mysql
 neovim
 nghttp2
@@ -32,5 +34,3 @@ vim
 wget
 zlib
 zsh
-zsh-autosuggestions
-zsh-completions

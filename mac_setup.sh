@@ -8,8 +8,9 @@ rm */.localized -y
 # brew install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Fira code
-brew tap homebrew/cask-fonts && brew cask install font-fira-code
+# brew tap
+brew tap homebrew/cask-fonts
+brew tap mongodb/brew
 
 # requirements.txt的なやつ
 xargs brew install < my_formula.txt

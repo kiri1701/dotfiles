@@ -1,9 +1,11 @@
+adobe-acrobat-reader
 alfred
 appcleaner
 basictex
 dash
 docker
 dropbox
+font-fira-code
 gimp
 gitkraken
 google-backup-and-sync
@@ -11,6 +13,7 @@ google-chrome
 iterm2
 java
 latexit
+metabase
 rstudio
 skitch
 tableplus
