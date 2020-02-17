@@ -30,6 +30,8 @@ alias gl='git log'
 alias gcm='git commit -m'
 alias gpom='git push origin master'
 alias vim='nvim'
+alias mem='cat /proc/meminfo'
+alias cpu='cat /proc/cpuinfo'
 
 # 追加したソフトやパッケージ用のコマンドのパスを通す
 export EDITOR='vim' # nanoからvimに変更
@@ -50,19 +52,3 @@ if [ -d "${PYENV_ROOT}" ]; then
     eval "$(pyenv init -)"
 fi
 
-# Customize to your needs...
-alias g='git'
-alias gs='git status'
-alias gb='git branch'
-alias gc='git checkout'
-alias gct='git commit'
-alias ga='git add'
-alias gd='git diff'
-alias gl='git log'
-alias gcm='git commit -m'
-alias gpom='git push origin master'
-alias vim='nvim'
-alias vi='vim'
-alias mem='cat /proc/meminfo'
-alias cpu='cat /proc/cpuinfo'
-alias gpu='nvidia-smi'
