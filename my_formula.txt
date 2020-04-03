@@ -24,7 +24,7 @@ nghttp2
 nginx
 nodebrew
 peco
-pipenv
+poetry
 postgresql
 pyenv
 r
