@@ -9,32 +9,47 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 
-" Tab
-nmap <C-t>N :tabnew<CR>
-nmap <C-t>n :tabNext<CR>
-nmap <C-t>p :tabprevious<CR>
+" The prefix key.
+nnoremap    [Tag]   <Nop>
+nmap    t [Tag]
+" Tab jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+" tc 新しいタブを一番右に作る
+map <silent> [Tag]x :tabclose<CR>
+" tx タブを閉じる
+map <silent> [Tag]n :tabnext<CR>
+" tn 次のタブ
+map <silent> [Tag]p :tabprevious<CR>
+" tp 前のタブ
 " Move
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-"" + => increment
+" + => increment
 nnoremap + <C-a>
 
-"" - => decrement
+" - => decrement
 nnoremap - <C-x>
 
-"" pbcopy for OSX copy/paste
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
+" jj => esc
+inoremap <silent> jj <ESC>
 
-"" move line/word
-nmap <C-e> $
-nmap <C-a> 0
-nmap <C-f> W
-nmap <C-b> B
-imap <C-e> <C-o>$
-imap <C-a> <C-o>0
-imap <C-c> <ESC>
+" for vim-anzu
+nmap n nzz<Plug>(anzu-update-search-status)
+nmap N Nzz<Plug>(anzu-update-search-status)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+
+" for opretaor-replace
+map R <Plug>(operator-replace)
+
+" leader
+let mapleader = "<Space>"

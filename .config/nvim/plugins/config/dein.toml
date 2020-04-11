@@ -1,12 +1,13 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# option bar
+# ステータスラインの変更
 [[plugins]]
-repo = 'vim-airline/vim-airline'
+repo    = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-depends = ['/vim-airline/vim-airline']
 
 # auto bracket
 [[plugins]]

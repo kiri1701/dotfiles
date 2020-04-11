@@ -8,81 +8,74 @@ let s:plugin = '~/.config/nvim/plugins/config/dein.toml'
 runtime! plugins/dein.rc.vim
 runtime! keymap.vim
 
-syntax enable
-set number
-set cursorline
-set autoindent
-set expandtab
-set smartindent
-set nowritebackup
-
-set encoding=utf-8
+"文字コードをUFT-8に設定
+set fenc=utf-8
+" 保存時の文字コード
 set fileencoding=utf-8
-set fileencodings=utf-8
-set bomb
-set binary
-set ttyfast
-set backspace=indent,eol,start
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-set splitright
-set splitbelow
-set hidden
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set nobackup
-set noswapfile
+" 読み込み時の文字コードの自動判別. 左側が優先される
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+" 改行コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac
-set ruler
-set gcr=a:blinkon0
-set scrolloff=3
-set laststatus=2
-set modeline
-set modelines=10
-set title
-set titleold="Terminal"
-set titlestring=%F
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+" □や○文字が崩れる問題を解
+set ambiwidth=double
+" バックアップファイルを作らない
+set nobackup
+" スワップファイルを作らない
+set noswapfile
+" 編集中のファイルが変更されたら自動で読み直す
 set autoread
+" バッファが編集中でもその他のファイルを開けるように
+set hidden
+" 入力中のコマンドをステータスに表示する
+set showcmd
+" クリップボードとの連携
 set clipboard+=unnamed
+" マウスを有効に
 set mouse=a
-set whichwrap=b,s,h,l,<,>,[,]
-highlight Pmenu ctermbg=233 ctermfg=241
-highlight PmenuSel ctermbg=233 ctermfg=166
-highlight Search ctermbg=166 ctermfg=233
-highlight Visual ctermbg=166 ctermfg=233
+" backspaceを有効に
+set backspace=indent,eol,start
 
-let mapleader = "<Space>"
-
-"" vim-airline
-let g:airline_theme = 'wombat'
+" 見た目系
+" 行番号を表示
+set number
+" 現在の行を強調表示
+set cursorline
+" 行末の1文字先までカーソルを移動できるように
+set virtualedit=onemore
+" インデントはスマートインデント
+set smartindent
+" 括弧入力時の対応する括弧を表示
+set showmatch
+" ステータスラインを常に表示
 set laststatus=2
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
-let g:airline_section_c = '%t'
-let g:airline_section_x = '%{&filetype}'
-let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
-let g:airline#extensions#ale#error_symbol = ' '
-let g:airline#extensions#ale#warning_symbol = ' '
-let g:airline#extensions#default#section_truncate_width = {}
-let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
+" コマンドラインの補完
+set wildmode=list:longest
+" シンタックスハイライトの有効化
+syntax enable
+" プログラム言語向けの自動インデント
+set smartindent
+" 画面スクロールのにいくつ余裕を持たせるか
+set scrolloff=5
 
-" for vim-anzu
-nmap n nzz<Plug>(anzu-update-search-status)
-nmap N Nzz<Plug>(anzu-update-search-status)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
-nmap <silent> <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+" Tab系
+" Tab文字を半角スペースにする
+set expandtab
+" 行頭以外のTab文字の表示幅（スペースいくつ分）
+set tabstop=4
+" 行頭でのTab文字の表示幅
+set shiftwidth=4
 
-" for opretaor-replace
-map R <Plug>(operator-replace)
+" 検索系
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+" 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+" 検索文字列入力時に順次対象文字列にヒットさせる
+set incsearch
+" 検索時に最後まで行ったら最初に戻る
+set wrapscan
+" 検索語をハイライト表示
+set hlsearch
+
+colorscheme molokai
+set t_Co=256

@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/kiri/Repos/TDD_python/src/CurrencyApp'
+let g:netrw_dirhist_7='/Users/kiri/Repos/TDD_python/src'
+let g:netrw_dirhist_6='/Users/kiri/Repos/TDD_python'
+let g:netrw_dirhist_5='/Users/kiri/Repos/TDD_python/tests'
+let g:netrw_dirhist_4='/Users/kiri/Repos/TDD_python'
+let g:netrw_dirhist_3='/Users/kiri/.config/nvim'
+let g:netrw_dirhist_2='/Users/kiri/.config'
+let g:netrw_dirhist_1='/usr/local/Caskroom/dash'
