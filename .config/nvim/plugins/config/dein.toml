@@ -77,3 +77,9 @@ repo = "shougo/deol.nvim"
 hook_add = """
 source ~/.config/nvim/plugins/deol.rc.vim
 """
+
+
+# ウィンドウサイズの変更
+[[plugins]]
+repo = "simeji/winresizer"
+

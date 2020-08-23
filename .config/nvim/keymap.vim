@@ -6,12 +6,23 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+" leader
+let mapleader = "\<Space>"
 
 " Move window
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
+
+let g:winresizer_start_key = '<C-q>'
+
+noremap <leader>q :q!<CR>
+noremap <leader>t :term<CR>
+noremap <leader>s <C-w>s
+noremap <leader>v <C-w>v
+noremap <leader>r <C-w>r
+noremap <leader>R <C-w>R
 
 " Move
 nnoremap j gj
@@ -38,6 +49,5 @@ inoremap <silent> jj <ESC>
 " for opretaor-replace
 " map R <Plug>(operator-replace)
 
-" leader
-let mapleader = "\<Space>"
-noremap <leader>q :q!<CR>
+
+
