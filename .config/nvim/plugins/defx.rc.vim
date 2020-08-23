@@ -1,5 +1,5 @@
 " 【Space + f】 defx.nvimを起動
-nnoremap <silent> <Leader>f :<C-u> Defx <CR>
+nnoremap <C-w>f :<C-u> Defx <CR>
 
 autocmd VimEnter * execute 'Defx'
 autocmd FileType defx call s:defx_my_settings()

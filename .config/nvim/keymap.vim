@@ -39,4 +39,5 @@ inoremap <silent> jj <ESC>
 " map R <Plug>(operator-replace)
 
 " leader
-let mapleader = "<Space>"
+let mapleader = "\<Space>"
+noremap <leader>q :q!<CR>
