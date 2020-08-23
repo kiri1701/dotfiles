@@ -45,6 +45,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PIPENV_VENV_IN_PROJECT=true
 export WORKON_HOME=$HOME/.virtualenvs
 export PGDATA=/usr/local/var/postgres
+export PATH="$PATH:/Users/kiri/flutter/bin"
 
 # envのパスを通す
 if [ -d "${PYENV_ROOT}" ]; then

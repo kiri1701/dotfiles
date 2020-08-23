@@ -1,10 +1,20 @@
-" 【Ctrl + w + f】 defx.nvimを起動
-nnoremap <C-w>f :<C-u>Defx<CR>
+" 【Space + f】 defx.nvimを起動
+nnoremap <silent> <Leader>f :<C-u> Defx <CR>
+
+autocmd VimEnter * execute 'Defx'
+autocmd FileType defx call s:defx_my_settings()
+autocmd BufWritePost * call defx#redraw()
+autocmd BufEnter * call defx#redraw()
 
 call defx#custom#option('_', {
-   \ 'columns': 'indent:git:icons:filename',
-   \ 'show_ignored_files': 1,
-   \ })
+      \ 'winwidth': 40,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 1,
+      \ 'buffer_name': 'exlorer',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ })
 
 let g:defx_icons_enable_syntax_highlight = 1
 let g:defx_icons_column_length = 2
@@ -12,16 +22,19 @@ let g:defx_icons_column_length = 2
 autocmd FileType defx call s:defx_my_settings()
     function! s:defx_my_settings() abort
       nnoremap <silent><buffer><expr> <CR>
-      \ defx#do_action('open')
+      \ defx#do_action('drop')
       " 【o】 ファイルを開く
       nnoremap <silent><buffer><expr> o
-      \ defx#do_action('open')
+      \ defx#do_action('drop')
       " 【s】 ウィンドウを水平分割してファイルを開く
       nnoremap <silent><buffer><expr> s
-      \ defx#do_action('open', 'split')
+      \ defx#do_action('drop', 'split')
       " 【v】 ウィンドウを垂直分割してファイルを開く
       nnoremap <silent><buffer><expr> v
-      \ defx#do_action('open', 'vsplit')
+      \ defx#do_action('drop', 'vsplit')
+      " 【t】 タブで開く
+      nnoremap <silent><buffer><expr> t
+      \ defx#do_action('open', 'tabnew')
       " 【c】 ファイルをコピーする
       nnoremap <silent><buffer><expr> c
       \ defx#do_action('copy')
@@ -43,9 +56,6 @@ autocmd FileType defx call s:defx_my_settings()
       " 【r】 ファイル名を変更する
       nnoremap <silent><buffer><expr> r
       \ defx#do_action('rename')
-      " 【t】 ツリーを表示/非表示する
-      nnoremap <silent><buffer><expr> t
-      \ defx#do_action('open_or_close_tree')
       " 【x】 ファイルを実行する
       nnoremap <silent><buffer><expr> x
       \ defx#do_action('execute_system')
