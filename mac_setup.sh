@@ -8,23 +8,14 @@ rm */.localized -y
 # brew install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# brew tap
-brew tap homebrew/cask-fonts
-brew tap mongodb/brew
-
-# requirements.txt的なやつ
-xargs brew install < my_formula.txt
-xargs brew cask install < my_cask_formula.txt
-
 # prezto
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-rm ~/.zpreztorc -y
+brew bundle ~/dotfiles/Brewfile
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+source ~/.zshrc
+zinit self-update
+
 rm ~/.zshrc -y
-ln -s ~/dotfiles/zpreztorc ~/.zpreztorc
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
