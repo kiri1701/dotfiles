@@ -101,6 +101,7 @@ function pdev () {
 export EDITOR='vim' # nanoからvimに変更
 export VISUAL='vim' # nanoからvimに変更
 export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
