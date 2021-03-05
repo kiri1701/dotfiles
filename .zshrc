@@ -19,8 +19,6 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
 # Customize to your needs...
-alias g='git'
-alias gs='git status'
 alias gb='git branch'
 alias gc='git checkout'
 alias gct='git commit'
@@ -29,9 +27,20 @@ alias gd='git diff'
 alias gl='git log'
 alias gcm='git commit -m'
 alias gpom='git push origin master'
-alias vim='nvim'
 alias mem='cat /proc/meminfo'
 alias cpu='cat /proc/cpuinfo'
+alias pr='poetry run'
+alias pp='poetry run python'
+alias ccds='cookiecutter https://github.com/drivendata/cookiecutter-data-science'
+alias vcd='code "`ghq root`/`ghq list | peco`"'
+alias gcd='cd $(ghq root)/$(ghq list | peco)'
+alias repo='ls $HOME/Repos/|peco'
+alias vim='nvim'
+
+
+function pdev () {
+  poetry add -D black flake8 mypy pytest
+}
 
 # 追加したソフトやパッケージ用のコマンドのパスを通す
 export EDITOR='vim' # nanoからvimに変更
@@ -42,8 +51,6 @@ export PATH="$HOME/.nodebrew/current/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PYENV_ROOT=/usr/local/var/pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PIPENV_VENV_IN_PROJECT=true
-export WORKON_HOME=$HOME/.virtualenvs
 export PGDATA=/usr/local/var/postgres
 export PATH="$PATH:/Users/kiri/flutter/bin"
 
@@ -52,4 +59,4 @@ if [ -d "${PYENV_ROOT}" ]; then
     export PATH=${PYENV_ROOT}/bin:$PATH
     eval "$(pyenv init -)"
 fi
-
+eval "$(gh completion -s zsh)"

@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/kiri/Repos/intro-aws/docker'
 let g:netrw_dirhist_2='/Users/kiri/dotfiles/.config/nvim/plugins'
 let g:netrw_dirhist_1='/Users/kiri/dotfiles/.config/nvim'
