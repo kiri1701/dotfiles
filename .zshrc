@@ -72,6 +72,17 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 # GHQでクローンしたGitリポジトリを表示
 bindkey '^xg' anyframe-widget-cd-ghq-repository
 
+bindkey -e
+
+# 追加したソフトやパッケージ用のコマンドのパスを通す
+export EDITOR='vim' # nanoからvimに変更
+export VISUAL='vim' # nanoからvimに変更
+export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
+export PGDATA=/usr/local/var/postgres
+export PATH="$PATH:/Users/kiri/flutter/bin"
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # Customize to your needs...
 alias gb='git branch'
@@ -97,21 +108,14 @@ function pdev () {
   poetry add -D black flake8 mypy pytest
 }
 
-# 追加したソフトやパッケージ用のコマンドのパスを通す
-export EDITOR='vim' # nanoからvimに変更
-export VISUAL='vim' # nanoからvimに変更
-export PATH="$PATH:/usr/local/bin"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
-export PATH="$HOME/.nodebrew/current/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PYENV_ROOT=/usr/local/var/pyenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PGDATA=/usr/local/var/postgres
-export PATH="$PATH:/Users/kiri/flutter/bin"
-
-# envのパスを通す
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init -)"
+# anyenvのセット
+if [ -e "$HOME/.anyenv" ]
+then
+    export ANYENV_ROOT="$HOME/.anyenv"
+    export PATH="$ANYENV_ROOT/bin:$PATH"
+    if command -v anyenv 1>/dev/null 2>&1
+    then
+        eval "$(anyenv init -)"
+    fi
 fi
+
