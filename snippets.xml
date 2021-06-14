@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<folders>
+	<folder>
+		<title>Shell</title>
+		<snippets>
+			<snippet>
+				<title>brew deps</title>
+				<content>brew deps --tree --installed</content>
+			</snippet>
+			<snippet>
+				<title>brew rmtree</title>
+				<content>brew rmtree vim</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>Python</title>
+		<snippets>
+			<snippet>
+				<title>df_import</title>
+				<content>import numpy as np
+import pandas as pd
+import plotly
+import seaborn as sns</content>
+			</snippet>
+			<snippet>
+				<title>tf_import</title>
+				<content></content>
+			</snippet>
+			<snippet>
+				<title>torch_import</title>
+				<content></content>
+			</snippet>
+			<snippet>
+				<title>Logger</title>
+				<content></content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>Markdown</title>
+		<snippets>
+			<snippet>
+				<title>Strikethrough</title>
+				<content>~~打ち消し~~</content>
+			</snippet>
+			<snippet>
+				<title>Details</title>
+				<content>&lt;details&gt;&lt;summary&gt;Qiita(キータ)は、プログラマのための技術情報共有サービスです。&lt;/summary&gt;プログラミングに関することをどんどん投稿して、知識を記録、共有しましょう。
+Qiitaに投稿すると、自分のコードやノウハウを見やすい形で残すことができます。
+技術情報はテキストファイルへのメモではなく、タグを付けた文章、シンタックスハイライトされたコードで保存することで初めて再利用可能な知識になる、そうQiitaでは考えています。&lt;/details&gt;</content>
+			</snippet>
+			<snippet>
+				<title>Horizontal</title>
+				<content>* * *</content>
+			</snippet>
+			<snippet>
+				<title>Links</title>
+				<content>[Qiita](http://qiita.com &quot;Qiita Home&quot;)</content>
+			</snippet>
+			<snippet>
+				<title>Images</title>
+				<content>![Qiita](https://qiita-image-store.s3.amazonaws.com/0/45617/015bd058-7ea0-e6a5-b9cb-36a4fb38e59c.png &quot;Qiita&quot;)</content>
+			</snippet>
+			<snippet>
+				<title>Tables</title>
+				<content>| Left align | Right align | Center align |
+|:-----------|------------:|:------------:|
+| This       | This        | This         |
+| column     | column      | column       |
+| will       | will        | will         |
+| be         | be          | be           |
+| left       | right       | center       |
+| aligned    | aligned     | aligned      |</content>
+			</snippet>
+			<snippet>
+				<title>Math</title>
+				<content>```math
+\left( \sum_{k=1}^n a_k b_k \right)^{!!2} \leq
+\left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+```</content>
+			</snippet>
+			<snippet>
+				<title>TOC</title>
+				<content></content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>HTML</title>
+		<snippets>
+			<snippet>
+				<title>Template</title>
+				<content>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;無名のドキュメント&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;メタディスクリプションを記述します。&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;theme.css&quot;&gt;
+ 
+    &lt;!--[if lt IE 9]&gt;
+	&lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+		
+  &lt;/body&gt;
+&lt;/html&gt;</content>
+			</snippet>
+			<snippet>
+				<title>Login</title>
+				<content>&lt;form role=&quot;form&quot;&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;email&quot;&gt;Email address:&lt;/label&gt;
+    &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;email&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;pwd&quot;&gt;Password:&lt;/label&gt;
+    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;pwd&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;checkbox&quot;&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Remember me&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</content>
+			</snippet>
+			<snippet>
+				<title>List</title>
+				<content>&lt;ul&gt;
+&lt;li&gt;白くま&lt;/li&gt;
+&lt;li&gt;ライオン&lt;/li&gt;
+&lt;li&gt;クロヒョウ&lt;/li&gt;
+&lt;li&gt;チンパンジー&lt;/li&gt;
+&lt;li&gt;山猫&lt;/li&gt;
+&lt;/ul&gt;</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>PlantUML</title>
+		<snippets>
+			<snippet>
+				<title>sequence</title>
+				<content>@startuml
+Alice -&gt; Bob: Authentication Request
+Bob --&gt; Alice: Authentication Response
+
+Alice -&gt; Bob: Another authentication Request
+Alice &lt;-- Bob: another authentication Response
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>usecase</title>
+				<content>@startuml
+:User: --&gt; (Use)
+&quot;Main Admin&quot; as Admin
+&quot;Use the application&quot; as (Use)
+Admin --&gt; (Admin the application)
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>class</title>
+				<content>@startuml
+abstract        abstract
+abstract class  &quot;abstract class&quot;
+annotation      annotation
+circle          circle
+()              circle_short_form
+class           class
+diamond         diamond
+&lt;&gt;              diamond_short_form
+entity          entity
+enum            enum
+interface       interface
+Class01 &lt;|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>object</title>
+				<content>@startuml
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
+object user {
+  name = &quot;Dummy&quot;
+  id = 123
+}
+
+Object01 &lt;|-- Object02
+Object03 *-- Object04
+Object05 o-- &quot;4&quot; Object06
+Object07 .. Object08 : some labels
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>activity</title>
+				<content>@startuml
+
+start
+
+if (Graphviz installed?) then (yes)
+  :process all\ndiagrams;
+else (no)
+  :process only
+  __sequence__ and __activity__ diagrams;
+endif
+
+stop
+
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>component</title>
+				<content>@startuml
+
+package &quot;Some Group&quot; {
+  HTTP - [First Component]
+  [Another Component]
+}
+
+node &quot;Other Groups&quot; {
+  FTP - [Second Component]
+  [First Component] --&gt; FTP
+}
+
+cloud {
+  [Example 1]
+}
+
+
+database &quot;MySql&quot; {
+  folder &quot;This is my folder&quot; {
+    [Folder 3]
+  }
+  frame &quot;Foo&quot; {
+    [Frame 4]
+  }
+}
+
+
+[Another Component] --&gt; [Example 1]
+[Example 1] --&gt; [Folder 3]
+[Folder 3] --&gt; [Frame 4]
+
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>placement</title>
+				<content>@startuml
+folder フォルダ [
+これは&lt;b&gt;フォルダ&lt;/b&gt;です
+----
+境界線として
+====
+いろいろな種類の
+....
+スタイルが使えます
+]
+
+node ノード [
+これは&lt;b&gt;ノード&lt;/b&gt;です
+----
+境界線として
+====
+いろいろな種類の
+....
+スタイルが使えます
+]
+
+database データベース [
+これは&lt;b&gt;データベース&lt;/b&gt;です
+----
+境界線として
+====
+いろいろな種類の
+....
+スタイルが使えます
+]
+
+usecase ユースケース [
+これは&lt;b&gt;ユースケース&lt;/b&gt;です
+----
+境界線として
+====
+いろいろな種類の
+....
+スタイルが使えます
+]
+
+card カード [
+これは&lt;b&gt;カード&lt;/b&gt;です
+----
+境界線として
+====
+いろいろな種類の
+....
+スタイルが使えます
+&lt;i&gt;&lt;color:blue&gt;(add from V1.2020.7)&lt;/color&gt;&lt;/i&gt;
+]
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>transition</title>
+				<content>@startuml
+scale 350 width
+[*] --&gt; NotShooting
+
+state NotShooting {
+  [*] --&gt; Idle
+  Idle --&gt; Configuring : EvConfig
+  Configuring --&gt; Idle : EvConfig
+}
+
+state Configuring {
+  [*] --&gt; NewValueSelection
+  NewValueSelection --&gt; NewValuePreview : EvNewValue
+  NewValuePreview --&gt; NewValueSelection : EvNewValueRejected
+  NewValuePreview --&gt; NewValueSelection : EvNewValueSaved
+
+  state NewValuePreview {
+     State1 -&gt; State2
+  }
+
+}
+@enduml</content>
+			</snippet>
+			<snippet>
+				<title>timing</title>
+				<content>@startuml
+robust &quot;ウェブブラウザ&quot; as WB
+concise &quot;ユーザ&quot; as WU
+
+@0
+WU is アイドル
+WB is アイドル
+
+@100
+WU -&gt; WB : URL
+WU is 待機
+WB is 処理中
+
+@300
+WB is 待機
+@enduml</content>
+			</snippet>
+		</snippets>
+	</folder>
+	<folder>
+		<title>cookiecutter</title>
+		<snippets>
+			<snippet>
+				<title>CRISP-DM</title>
+				<content>cookiecutter gh:kiri1701/problem-solution-template</content>
+			</snippet>
+			<snippet>
+				<title>Data Science</title>
+				<content>cookiecutter -c v1 https://github.com/drivendata/cookiecutter-data-science</content>
+			</snippet>
+		</snippets>
+	</folder>
+</folders>

@@ -83,6 +83,8 @@ export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
 export PGDATA=/usr/local/var/postgres
 export PATH="$PATH:/Users/kiri/flutter/bin"
 export PATH="$HOME/.poetry/bin:$PATH"
+export CARGO_HOME="$HOME/.cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
 
 # Customize to your needs...
 alias gb='git branch'
@@ -92,7 +94,7 @@ alias ga='git add'
 alias gd='git diff'
 alias gl='git log'
 alias gcm='git commit -m'
-alias gpom='git push origin master'
+alias gpom='git push origin main'
 alias mem='cat /proc/meminfo'
 alias cpu='cat /proc/cpuinfo'
 alias pr='poetry run'
@@ -105,7 +107,7 @@ alias vim='nvim'
 
 
 function pdev () {
-  poetry add -D black flake8 mypy pytest
+  poetry add -D black flake8 mypy pytest isort
 }
 
 # anyenvのセット
