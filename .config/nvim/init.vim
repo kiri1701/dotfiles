@@ -1,5 +1,5 @@
 " python path
-let g:python3_host_prog = $PYENV_ROOT.'/versions/3.9.2/bin/python'
+let g:python3_host_prog = $PYENV_ROOT.'/versions/3.9.9/bin/python'
 let g:python_host_prog = $PYENV_ROOT.'/versions/2.7.17/bin/python'
 
 let g:ruby_host_prog = '/Users/kiri/.anyenv/envs/rbenv/shims/neovim-ruby-host'

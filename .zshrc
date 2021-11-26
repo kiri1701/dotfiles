@@ -1,25 +1,28 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
 
+# Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
+
 # Preztoのセットアップ
 zinit snippet PZT::modules/helper/init.zsh
 # oh-my-zshのセットアップ
@@ -34,9 +37,9 @@ zinit light agnoster/agnoster-zsh-theme # <- ここで好きなテーマのGitHu
 # 補完
 zinit light zsh-users/zsh-autosuggestions
 # シンタックスハイライト
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 # Ctrl+r でコマンド履歴を検索
-zinit light zdharma/history-search-multi-word
+zinit light zdharma-continuum/history-search-multi-word
 # クローンしたGit作業ディレクトリで、コマンド `git open` を実行するとブラウザでGitHubが開く
 zinit light paulirish/git-open
 # iTerm2を使っている場合に、コマンド `tt タブ名` でタブ名を変更できる
@@ -49,10 +52,10 @@ zinit light supercrabtree/k
 # AWS CLI v2の補完。
 # 要 AWS CLI v2
 # この順序で記述しないと `complete:13: command not found: compdef` のようなエラーになるので注意
-autoload bashcompinit && bashcompinit
-source ~/.zinit/plugins/drgr33n---oh-my-zsh_aws2-plugin/aws2_zsh_completer.sh
-complete -C '/usr/local/bin/aws_completer' aws
-zinit light drgr33n/oh-my-zsh_aws2-plugin
+# autoload bashcompinit && bashcompinit
+# source ~/.zinit/plugins/drgr33n---oh-my-zsh_aws2-plugin/aws2_zsh_completer.sh
+# complete -C '/usr/local/bin/aws_completer' aws
+# zinit light drgr33n/oh-my-zsh_aws2-plugin
 
 # anyframeのセットアップ
 zinit light mollifier/anyframe
@@ -106,7 +109,7 @@ alias repo='ls $HOME/Repos/|peco'
 alias vim='nvim'
 
 
-function pdev () {
+function pydev () {
   poetry add -D black flake8 mypy pytest isort
 }
 
@@ -120,4 +123,3 @@ then
         eval "$(anyenv init -)"
     fi
 fi
-

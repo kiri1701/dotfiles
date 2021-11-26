@@ -34,10 +34,10 @@ repo = 'kana/vim-operator-user'
 repo = 'kana/vim-operator-replace'
 
 # fzfのインクリメンタルサーチを使えるように
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-[[plugins]]
-repo = '/usr/local/opt/fzf'
+# [[plugins]]
+# repo = 'junegunn/fzf.vim'
+# [[plugins]]
+# repo = '/opt/homebrew/fzf'
 
 # %による移動
 [[plugins]]
