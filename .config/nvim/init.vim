@@ -5,9 +5,12 @@ let g:python_host_prog = $PYENV_ROOT.'/versions/2.7.17/bin/python'
 let g:ruby_host_prog = '/Users/kiri/.anyenv/envs/rbenv/shims/neovim-ruby-host'
 
 " プラグインの設定ファイルPath
-let s:plugin = '~/.config/nvim/plugins/config/dein.toml'
+if !exists('g:vscode')
+    let s:plugin = '~/.config/nvim/plugins/config/dein.toml'
+    runtime! plugins/dein.rc.vim
+    set ambiwidth=double
+endif
 
-runtime! plugins/dein.rc.vim
 runtime! keymap.vim
 
 "文字コードをUFT-8に設定
