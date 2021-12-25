@@ -84,7 +84,7 @@ export PATH="$PATH:/usr/local/bin"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:/Library/TeX/texbin:$PATH"
 export PGDATA=/usr/local/var/postgres
-export PATH="$PATH:/Users/kiri/flutter/bin"
+export PATH="$PATH:/Users/kiri/Development/flutter/bin"
 export PATH="$HOME/.poetry/bin:$PATH"
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
@@ -100,18 +100,12 @@ alias gcm='git commit -m'
 alias gpom='git push origin main'
 alias mem='cat /proc/meminfo'
 alias cpu='cat /proc/cpuinfo'
-alias pr='poetry run'
-alias pp='poetry run python'
-alias ccds='cookiecutter https://github.com/drivendata/cookiecutter-data-science'
 alias vcd='code "`ghq root`/`ghq list | peco`"'
 alias gcd='cd $(ghq root)/$(ghq list | peco)'
 alias repo='ls $HOME/Repos/|peco'
 alias vim='nvim'
+alias k='kubectl'
 
-
-function pydev () {
-  poetry add -D black flake8 mypy pytest isort
-}
 
 # anyenvのセット
 if [ -e "$HOME/.anyenv" ]
