@@ -21,8 +21,6 @@ set fileencoding=utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 " 改行コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac
-" □や○文字が崩れる問題を解
-set ambiwidth=double
 " バックアップファイルを作らない
 set nobackup
 " スワップファイルを作らない
