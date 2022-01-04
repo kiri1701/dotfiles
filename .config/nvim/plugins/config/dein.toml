@@ -48,7 +48,6 @@ repo = 'andymass/vim-matchup'
  repo = 'easymotion/vim-easymotion'
  hook_add = '''
     nmap m <Plug>(easymotion-s2)
-    xmap m <Plug>(easymotion-s2)
  '''
 
 # coc
@@ -83,4 +82,3 @@ source ~/.config/nvim/plugins/denite.rc.vim
 # ウィンドウサイズの変更
 [[plugins]]
 repo = "simeji/winresizer"
-
