@@ -43,6 +43,14 @@ repo = 'kana/vim-operator-replace'
 [[plugins]]
 repo = 'andymass/vim-matchup'
 
+# easy motion
+[[plugins]]
+ repo = 'easymotion/vim-easymotion'
+ hook_add = '''
+    nmap m <Plug>(easymotion-s2)
+    xmap m <Plug>(easymotion-s2)
+ '''
+
 # coc
 [[plugins]]
 repo = "neoclide/coc.nvim"
@@ -71,13 +79,6 @@ repo = "Shougo/denite.nvim"
 hook_add = """
 source ~/.config/nvim/plugins/denite.rc.vim
 """
-
-[[plugins]]
-repo = "shougo/deol.nvim"
-hook_add = """
-source ~/.config/nvim/plugins/deol.rc.vim
-"""
-
 
 # ウィンドウサイズの変更
 [[plugins]]
