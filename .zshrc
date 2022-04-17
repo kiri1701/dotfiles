@@ -88,6 +88,9 @@ export PATH="$PATH:/Users/kiri/Development/flutter/bin"
 export PATH="$HOME/.poetry/bin:$PATH"
 export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
 
 # Customize to your needs...
 alias gb='git branch'
