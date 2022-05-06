@@ -23,29 +23,24 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-# Preztoのセットアップ
-zinit snippet PZT::modules/helper/init.zsh
 # oh-my-zshのセットアップ
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit cdclear -q
+
 # プロンプトのカスタマイズ
 setopt promptsubst
 zinit snippet OMZT::gnzh
-zinit light agnoster/agnoster-zsh-theme # <- ここで好きなテーマのGitHubリポジトリを Group/Repository で指定。
+# Load the pure theme, with zsh-async library that's bundled with it.
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
 
 # 補完
 zinit light zsh-users/zsh-autosuggestions
 # シンタックスハイライト
 zinit light zdharma-continuum/fast-syntax-highlighting
-# Ctrl+r でコマンド履歴を検索
-zinit light zdharma-continuum/history-search-multi-word
-# クローンしたGit作業ディレクトリで、コマンド `git open` を実行するとブラウザでGitHubが開く
-zinit light paulirish/git-open
 # iTerm2を使っている場合に、コマンド `tt タブ名` でタブ名を変更できる
 zinit light gimbo/iterm2-tabs.zsh
-# jq をインタラクティブに使える。JSONを標準出力に出すコマンドを入力した状態で `Alt+j` すると jq のクエリが書ける。
-zinit light reegnz/jq-zsh-plugin
 # Gitの変更状態がわかる ls。ls の代わりにコマンド `k` を実行するだけ。
 zinit light supercrabtree/k
 
@@ -74,7 +69,6 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 # Ctrl+x -> g
 # GHQでクローンしたGitリポジトリを表示
 bindkey '^xg' anyframe-widget-cd-ghq-repository
-
 bindkey -e
 
 # 追加したソフトやパッケージ用のコマンドのパスを通す
@@ -90,6 +84,7 @@ export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
 # Customize to your needs...
@@ -107,8 +102,7 @@ alias vcd='code "`ghq root`/`ghq list | peco`"'
 alias gcd='cd $(ghq root)/$(ghq list | peco)'
 alias repo='ls $HOME/Repos/|peco'
 alias vim='nvim'
-alias k='kubectl'
-
+alias kc='kubectl'
 
 # anyenvのセット
 if [ -e "$HOME/.anyenv" ]
